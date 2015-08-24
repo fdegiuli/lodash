@@ -6,7 +6,6 @@ var createFlow = require('../internal/createFlow');
  *
  * @static
  * @memberOf _
- * @alias backflow, compose
  * @category Function
  * @param {...Function} [funcs] Functions to invoke.
  * @returns {Function} Returns the new function.

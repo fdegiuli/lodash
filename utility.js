@@ -1,6 +1,5 @@
 module.exports = {
   'attempt': require('./utility/attempt'),
-  'callback': require('./utility/callback'),
   'constant': require('./utility/constant'),
   'identity': require('./utility/identity'),
   'iteratee': require('./utility/iteratee'),
@@ -14,5 +13,6 @@ module.exports = {
   'propertyOf': require('./utility/propertyOf'),
   'range': require('./utility/range'),
   'times': require('./utility/times'),
+  'toPath': require('./utility/toPath'),
   'uniqueId': require('./utility/uniqueId')
 };
