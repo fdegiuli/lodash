@@ -67,8 +67,6 @@
           case 'lodash':            return 1;
           case 'lodash-core-dev':   return 2;
           case 'lodash-core':       return 3;
-          case 'lodash-custom-dev': return 4;
-          case 'lodash-custom':     return 5;
           case 'lodash-dev':
           case null:                return 0;
         }
@@ -99,8 +97,6 @@
       '<option value="lodash">lodash (production)</option>' +
       '<option value="lodash-core-dev">lodash-core (development)</option>' +
       '<option value="lodash-core">lodash-core (production)</option>' +
-      '<option value="lodash-custom-dev">lodash (custom development)</option>' +
-      '<option value="lodash-custom">lodash (custom production)</option>' +
       '</select>';
 
     var span2 = document.createElement('span');
@@ -128,11 +124,9 @@
   ui.buildPath = (function() {
     var result;
     switch (build) {
-      case 'lodash':            result = 'lodash.min.js'; break;
-      case 'lodash-core-dev':   result = 'lodash.core.js'; break;
-      case 'lodash-core':       result = 'lodash.core.min.js'; break;
-      case 'lodash-custom-dev': result = 'lodash.custom.js'; break;
-      case 'lodash-custom':     result = 'lodash.custom.min.js'; break;
+      case 'lodash':            result = 'dist/lodash.min.js'; break;
+      case 'lodash-core-dev':   result = 'dist/lodash.core.js'; break;
+      case 'lodash-core':       result = 'dist/lodash.core.min.js'; break;
       case null:                build  = 'lodash-dev';
       case 'lodash-dev':        result = 'lodash.js'; break;
       default:                  return build;
@@ -160,13 +154,13 @@
   ui.isForeign = RegExp('^(\\w+:)?//').test(build);
 
   // Used to indicate testing a modularized build.
-  ui.isModularize = /\b(?:amd|commonjs|es6?|node|npm|(index|main)\.js)\b/.test([location.pathname, location.search]);
+  ui.isModularize = /\b(?:amd|commonjs|es|node|npm|(index|main)\.js)\b/.test([location.pathname, location.search]);
 
   // Used to indicate testing in Sauce Labs' automated test cloud.
   ui.isSauceLabs = location.port == '9001';
 
   // Used to indicate that lodash is in strict mode.
-  ui.isStrict = /\bes6?\b/.test([location.pathname, location.search]);
+  ui.isStrict = /\bes\b/.test([location.pathname, location.search]);
 
   ui.urlParams = { 'build': build, 'loader': loader };
   ui.timing = { 'loadEventEnd': 0 };
