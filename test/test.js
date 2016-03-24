@@ -8675,7 +8675,7 @@
       if ( Buffer  ) { // Buffer doesn't exist in browsers. 
         assert.strictEqual(_.isEmpty(new Buffer('')), true);
       } else  {
-        assert(true);
+        skipAssert(assert);
       }
     });
 
